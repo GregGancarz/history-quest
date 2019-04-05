@@ -28,13 +28,13 @@ const game = {
     questionsAsked: 0,
     status: '', // start-menu, quiz-active, round-over
     questionKeys: [{
-        keyA: [{q1: {
+        keyA: [{q1: [{
                 question: 'what time is it?',
                 a: 'aardvark',
                 b: 'batman',
                 c: 'charliehorse',
                 d: 'dog'
-            	}
+            	}]
         	},
             {q2: {
                 question: 'who saw what happened?',
@@ -80,7 +80,7 @@ const game = {
         }]
 }
 
-console.log(game.questionKeys[1[1]]);
+console.log(game.questionKeys[0].keyA[1].q2.question);
 
 
 

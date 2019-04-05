@@ -1,0 +1,26 @@
+h1, p	{
+	text-align: center;
+}
+
+#painting {
+	height: 250px;
+	background-color: navy;
+	width: 60%;
+ 	margin: 0 auto;
+}
+
+#buttons {
+	text-align: center;
+}
+
+#container {
+	background-image: url("https://st2.depositphotos.com/1011833/9129/i/950/depositphotos_91293576-stock-photo-old-nautical-map-background.jpg");
+	background-size: auto;
+	max-width: 1025px;
+	height: 750px;
+	margin: 0 auto;
+}
+
+body {
+	background-color: black;
+}
