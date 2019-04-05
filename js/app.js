@@ -45,10 +45,11 @@ const game = {
     questArr: [],
     correctKey: '',
     clicked: '',
+    qNum: '',
     begin1P() {
         const player1 = new Player();
         player1.selector = 0
-        this.activePlayer = 'player1';
+        this.activePlayer = player1.selector;
         game.status = 'game';
         this.playerArr.push(player1)
     },
@@ -57,7 +58,7 @@ const game = {
         player1.selector = 0
         const player2 = new Player();        
         player2.selector = 1
-        this.activePlayer = 'player1';
+        this.activePlayer = player1.selector;
         game.status = 'game';
         this.playerArr.push(player1)
         this.playerArr.push(player2)
@@ -69,7 +70,7 @@ const game = {
         player2.selector = 1
         const player3 = new Player();
         player3.selector = 2
-        this.activePlayer = 'player1';
+        this.activePlayer = player1.selector;
         game.status = 'game';
         this.playerArr.push(player1)
         this.playerArr.push(player2)
@@ -84,7 +85,7 @@ const game = {
         player3.selector = 2
         const player4 = new Player();
         player4.selector = 3
-        this.activePlayer = 'player1';
+        this.activePlayer = player1.selector;
         game.status = 'game';
         this.playerArr.push(player1)
         this.playerArr.push(player2)
@@ -130,26 +131,26 @@ const game = {
         this.questArr.push(q15);
     },
     getQuestion() {
-        qNum = Math.floor(Math.random() * this.questArr.length);
-        $('.feeder').text(this.questArr[qNum].question);
-        $('.a').text(this.questArr[qNum].a);
-        $('.b').text(this.questArr[qNum].b);
-        $('.c').text(this.questArr[qNum].c);
-        $('.d').text(this.questArr[qNum].d);
+        this.qNum = Math.floor(Math.random() * this.questArr.length);
+        $('.feeder').text(this.questArr[this.qNum].question);
+        $('.a').text(this.questArr[this.qNum].a);
+        $('.b').text(this.questArr[this.qNum].b);
+        $('.c').text(this.questArr[this.qNum].c);
+        $('.d').text(this.questArr[this.qNum].d);
     },
     switchPlayer() {
-        nextPlayNum = this.activePlayer.selector += 1;
-        this.activePlayer = this.playerArr[nextPlayNum];
+        //nextPlayNum = this.activePlayer.selector += 1;
+        //this.activePlayer = this.playerArr[nextPlayNum];
     },
     clickAnswer() {
-        if(this.discardedQuestions = this.quizLength) {
+        if(this.discardedQuestions.length == this.quizLength) {
             this.switchPlayer();
         } else {
-            this.correctKey = this.questArr[qNum].correct
+            this.correctKey = this.questArr[this.qNum].correct
             if(this.clicked.hasClass(this.correctKey)) {
                 this.activePlayer.points += 1;
-            }
-            this.discardedQuestions.push(game.questArr[qNum])
+                this.discardedQuestions.push(game.questArr[this.qNum]);
+            };
             this.getQuestion();
         }
     }
@@ -174,7 +175,7 @@ $('.b').on('click', (e) => {
     game.clicked = $clicked;
     if(game.status == '') {
         game.genQuestions();
-        game.begin1P();
+        game.begin2P();
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
@@ -186,7 +187,7 @@ $('.c').on('click', (e) => {
     game.clicked = $clicked;
     if(game.status == '') {
         game.genQuestions();
-        game.begin1P();
+        game.begin3P();
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
@@ -198,7 +199,7 @@ $('.d').on('click', (e) => {
     game.clicked = $clicked;
     if(game.status == '') {
         game.genQuestions();
-        game.begin1P();
+        game.begin4P();
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
