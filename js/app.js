@@ -43,7 +43,7 @@ const game = {
     questArr: [],
     qToMove: [],
     discardedQuestions: [],
-    quizLength: 3,
+    quizLength: 4,
     victor: '', // player with high points
     status: '',
     correctKey: '',
@@ -118,6 +118,8 @@ const game = {
         this.questArr.push(q14);
         const q15 = new Question('Christopher Columbus first made landfall in what is now...?', 'Cuba', 'Haiti', 'Puerto Rico', 'The Bahamas', 'd');
         this.questArr.push(q15);
+        const q16 = new Question('The Russian Empire lost a major war against this Asian country around the turn of the 19th century', 'China', 'Mongolia', 'Vietnam', 'Japan', 'd');
+        this.questArr.push(q16);
     },
     getQuestion() {
         game.status = 'game';
@@ -145,25 +147,43 @@ const game = {
         $('.d').show();
     },
     cleanQuestArr() {
-        this.qToMove = this.questArr.splice(this.questArr[this.qNum], 1);
+        console.log('cleaning invoked');
+        qToMove = this.questArr.splice(this.questArr[(this.qNum)], 1);
         this.discardedQuestions.push(this.qToMove);
-        this.qToMove = [];
+        qToMove = [];
+        console.log(`the array after splicing`)
+        console.log(this.questArr);
+        console.log(`the array length after splicing: ${this.questArr.length}`);
     },
     clickAnswer() {
         this.correctKey = this.questArr[this.qNum].correct
         if(this.clicked.hasClass(this.correctKey)) {
             this.activePlayer.points += 1;
         };
+        console.log('the array before cleaning')
+        console.log(this.questArr);
+        console.log(`the index selector: ${this.qNum}`);
+        console.log(`the selected question that should be removed:`) 
+        console.log(this.questArr[this.qNum]);
         this.cleanQuestArr();
-        if(this.discardedQuestions.length % (this.quizLength) === 0) {
+        if(this.discardedQuestions.length % (this.quizLength) === 0 && (this.activePlayer.selector + 1) < this.playerArr.length) {
             this.switchPlayer();
+        } else if (this.discardedQuestions.length % (this.quizLength) === 0 && (this.activePlayer.selector + 1) == this.playerArr.length) {
+            this.getScores();
         } else {
             this.getQuestion();
         };
-        console.log(this.discardedQuestions.length);
-        console.log(this.questArr.length);
+        
     },
-    
+    getScores() {
+        console.log("getScores invoked");
+        this.status = 'end';
+        $('.feeder').text(`All players have completed their quizzes and Player X is the winner with a high score of Y!`);
+        $('.a').text('Play again');
+        $('.b').hide();
+        $('.c').hide();
+        $('.d').hide();
+    }
 }
 
 
@@ -180,6 +200,8 @@ $('.a').on('click', (e) => {
     } else if(game.status == 'pause') {
         game.getQuestion();
         game.unhide();
+    } else if(game.status == 'end') {
+        game.returnToMain();
     }
 });
 
