@@ -109,25 +109,44 @@ const game = {
         this.questArr.push(q14);
         const q15 = new Question('Christopher Columbus first made landfall in what is now...?', 'Cuba', 'Haiti', 'Puerto Rico', 'The Bahamas', 'd');
         this.questArr.push(q15);
-        console.log(this.questArr);
+    },
+    getQuestion() {
+        console.log(Math.floor(Math.random() * this.questArr.length));
+        qNum = Math.floor(Math.random() * this.questArr.length);
+        console.log(this.questArr[qNum]);
+        $('#feeder').text(this.questArr[qNum].question);
+        $('#a').text(this.questArr[qNum].a);
+        $('#b').text(this.questArr[qNum].b);
+        $('#c').text(this.questArr[qNum].c);
+        $('#d').text(this.questArr[qNum].d);
+
     }
 }
-    
+
 $('#a').on('click', () => {
-  game.genQuestions();
-  game.begin1P();
+    if(game.status == '') {
+        game.genQuestions();
+        game.begin1P();
+        game.getQuestion();
+    }
 })
 $('#b').on('click', () => {
-  game.genQuestions();
-  game.begin2P();
+    if(game.status == '') {
+        game.genQuestions();
+        game.begin2P();
+    }
 })
 $('#c').on('click', () => {
-  game.genQuestions();
-  game.begin3P();
+    if(game.status == '') {
+        game.genQuestions();
+        game.begin3P();
+    }
 })
 $('#d').on('click', () => {
-  game.genQuestions();
-  game.begin4P();
+    if(game.status == '') {
+        game.genQuestions();
+        game.begin4P();
+    }   
 })
 
 
