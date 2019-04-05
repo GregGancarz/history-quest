@@ -41,12 +41,11 @@ const game = {
     status: '', // start-menu, quiz-active, round-over
     questArr: [],
     correctKey: '',
+    clicked: '',
     begin1P() {
         const player1 = new Player();
         this.activePlayer = player1
-        console.log(this.activePlayer);
         game.status = 'game'
-
     },
     begin2P() {
         const player1 = new Player();
@@ -90,7 +89,7 @@ const game = {
         this.questArr.push(q9);
         const q10 = new Question('Thomas Jefferson died on the same day in the same year as which other founding father?', 'George Washington', 'Ben Frankin', 'John Adams', 'James Madison', 'c');
         this.questArr.push(q10);
-        const q11 = new Question('Puerto Rico gained independence from Spain during which president\'s term?', 'Theodore Roosevelt', 'William Taft', 'William McKinley', 'Woodrow Wilson', 'c');
+        const q11 = new Question('Puerto Rico gained independence from Spain during which US president\'s term?', 'Theodore Roosevelt', 'William Taft', 'William McKinley', 'Woodrow Wilson', 'c');
         this.questArr.push(q11);
         const q12= new Question('Dom Pedro I was the founder of what nation?', 'Mexico', 'Bolivia', 'Brazil', 'Chile', 'c');
         this.questArr.push(q12);
@@ -108,77 +107,66 @@ const game = {
         $('.b').text(this.questArr[qNum].b);
         $('.c').text(this.questArr[qNum].c);
         $('.d').text(this.questArr[qNum].d);
+    },
+    clickAnswer() {
+        this.correctKey = this.questArr[qNum].correct
+        if(this.clicked.hasClass(this.correctKey)) {
+            this.activePlayer.points += 1;
+        }
+        this.discardedQuestions.push(game.questArr[qNum])
+        this.getQuestion();
     }
 }
 
+
+
 $('.a').on('click', (e) => {
-    const $clicked = $(e.target)
+    $clicked = $(e.target);
+    game.clicked = $clicked;
     if(game.status == '') {
         game.genQuestions();
         game.begin1P();
         game.getQuestion();
-        game.status = 'game'
     } else if(game.status == 'game') {
-        game.correctKey = game.questArr[qNum].correct
-        if($clicked.hasClass(game.correctKey)) {
-            game.activePlayer.points += 1;
-            game.discardedQuestions.push(game.questArr[qNum])
-            game.getQuestion();
-        } else {
-            game.getQuestion();
-        }
+        game.clickAnswer();
     }
-})
+});
+
 $('.b').on('click', (e) => {
-    const $clicked = $(e.target)
+    $clicked = $(e.target);
+    game.clicked = $clicked;
     if(game.status == '') {
         game.genQuestions();
         game.begin1P();
         game.getQuestion();
-        game.status = 'game'
     } else if(game.status == 'game') {
-        game.correctKey = game.questArr[qNum].correct
-        if($clicked.hasClass(game.correctKey)) {
-            game.activePlayer.points += 1;
-            game.getQuestion();
-        } else {
-            game.getQuestion();
-        }
+        game.clickAnswer();
     }
-})
+});
+
 $('.c').on('click', (e) => {
-    const $clicked = $(e.target)
+    $clicked = $(e.target);
+    game.clicked = $clicked;
     if(game.status == '') {
         game.genQuestions();
         game.begin1P();
         game.getQuestion();
     } else if(game.status == 'game') {
-        game.correctKey = game.questArr[qNum].correct
-        if($clicked.hasClass(game.correctKey)) {
-            game.activePlayer.points += 1;
-            game.getQuestion();
-        } else {
-            game.getQuestion();
-        }
+        game.clickAnswer();
     }
-})
+});
+
 $('.d').on('click', (e) => {
-    const $clicked = $(e.target)
+    $clicked = $(e.target);
+    game.clicked = $clicked;
     if(game.status == '') {
         game.genQuestions();
         game.begin1P();
         game.getQuestion();
-        game.status = 'game'
     } else if(game.status == 'game') {
-        game.correctKey = game.questArr[qNum].correct
-        if($clicked.hasClass(game.correctKey)) {
-            game.activePlayer.points += 1;
-            game.getQuestion();
-        } else {
-            game.getQuestion();
-        }
+        game.clickAnswer();
     }
-})
+});
 
 
 
