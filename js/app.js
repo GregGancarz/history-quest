@@ -16,9 +16,11 @@
 
 
 class Player {
-	constructor() {
+	constructor(selector, name) {
 		this.points = 0;
-        this.selector = '';
+        this.selector = selector;
+        this.name = name;
+
 	}
 }
 
@@ -38,55 +40,42 @@ class Question {
 const game = {
     activePlayer: '',
     playerArr: [],
+    questArr: [],
+    qToMove: [],
     discardedQuestions: [],
     quizLength: 3,
     victor: '', // player with high points
     status: '',
-    questArr: [],
     correctKey: '',
     clicked: '',
     qNum: '',
     begin1P() {
-        const player1 = new Player();
-        player1.selector = 0
-        this.activePlayer = player1.selector;
-        game.status = 'game';
+        const player1 = new Player(0, 'Player 1');
+        this.activePlayer = player1;
         this.playerArr.push(player1)
     },
     begin2P() {
-        const player1 = new Player();
-        player1.selector = 0
-        const player2 = new Player();        
-        player2.selector = 1
-        this.activePlayer = player1.selector;
-        game.status = 'game';
+        const player1 = new Player(0, 'Player 1');
+        const player2 = new Player(1, 'Player 2');        
+        this.activePlayer = player1;
         this.playerArr.push(player1)
         this.playerArr.push(player2)
     },
     begin3P() {
-        const player1 = new Player();
-        player1.selector = 0        
-        const player2 = new Player();
-        player2.selector = 1
-        const player3 = new Player();
-        player3.selector = 2
-        this.activePlayer = player1.selector;
-        game.status = 'game';
+        const player1 = new Player(0, 'Player 1');
+        const player2 = new Player(1, 'Player 2');
+        const player3 = new Player(2, 'Player 3');
+        this.activePlayer = player1;
         this.playerArr.push(player1)
         this.playerArr.push(player2)
         this.playerArr.push(player3)
     },
     begin4P() {
-        const player1 = new Player();
-        player1.selector = 0
-        const player2 = new Player();
-        player2.selector = 1
-        const player3 = new Player();
-        player3.selector = 2
-        const player4 = new Player();
-        player4.selector = 3
-        this.activePlayer = player1.selector;
-        game.status = 'game';
+        const player1 = new Player(0, 'Player 1');
+        const player2 = new Player(1, 'Player 2');
+        const player3 = new Player(2, 'Player 3');
+        const player4 = new Player(3, 'Player 4');
+        this.activePlayer = player1;
         this.playerArr.push(player1)
         this.playerArr.push(player2)
         this.playerArr.push(player3)
@@ -131,6 +120,7 @@ const game = {
         this.questArr.push(q15);
     },
     getQuestion() {
+        game.status = 'game';
         this.qNum = Math.floor(Math.random() * this.questArr.length);
         $('.feeder').text(this.questArr[this.qNum].question);
         $('.a').text(this.questArr[this.qNum].a);
@@ -139,21 +129,41 @@ const game = {
         $('.d').text(this.questArr[this.qNum].d);
     },
     switchPlayer() {
-        //nextPlayNum = this.activePlayer.selector += 1;
-        //this.activePlayer = this.playerArr[nextPlayNum];
+        nextPlayNum = (this.activePlayer.selector += 1);
+        this.activePlayer = this.playerArr[nextPlayNum];
+        this.status = 'pause';
+        $('.feeder').text(`Question limit reached. ${this.activePlayer.name}, it is now your turn! Are you ready to continue?`);
+        $('.a').text('CONTINUE');
+        $('.b').hide();
+        $('.c').hide();
+        $('.d').hide();
+    },
+    unhide() {
+        $('.feeder').text(this.questArr[this.qNum].question);
+        $('.b').show();
+        $('.c').show();
+        $('.d').show();
+    },
+    cleanQuestArr() {
+        this.qToMove = this.questArr.splice(this.questArr[this.qNum], 1);
+        this.discardedQuestions.push(this.qToMove);
+        this.qToMove = [];
     },
     clickAnswer() {
-        if(this.discardedQuestions.length == this.quizLength) {
+        this.correctKey = this.questArr[this.qNum].correct
+        if(this.clicked.hasClass(this.correctKey)) {
+            this.activePlayer.points += 1;
+        };
+        this.cleanQuestArr();
+        if(this.discardedQuestions.length % (this.quizLength) === 0) {
             this.switchPlayer();
         } else {
-            this.correctKey = this.questArr[this.qNum].correct
-            if(this.clicked.hasClass(this.correctKey)) {
-                this.activePlayer.points += 1;
-                this.discardedQuestions.push(game.questArr[this.qNum]);
-            };
             this.getQuestion();
-        }
-    }
+        };
+        console.log(this.discardedQuestions.length);
+        console.log(this.questArr.length);
+    },
+    
 }
 
 
@@ -167,6 +177,9 @@ $('.a').on('click', (e) => {
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
+    } else if(game.status == 'pause') {
+        game.getQuestion();
+        game.unhide();
     }
 });
 
