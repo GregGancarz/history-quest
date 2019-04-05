@@ -18,6 +18,7 @@
 class Player {
 	constructor() {
 		this.points = 0;
+        this.selector = '';
 	}
 }
 
@@ -36,31 +37,59 @@ class Question {
 
 const game = {
     activePlayer: '',
+    playerArr: [],
     discardedQuestions: [],
+    quizLength: 3,
     victor: '', // player with high points
-    status: '', // start-menu, quiz-active, round-over
+    status: '',
     questArr: [],
     correctKey: '',
     clicked: '',
     begin1P() {
         const player1 = new Player();
-        this.activePlayer = player1
-        game.status = 'game'
+        player1.selector = 0
+        this.activePlayer = player1;
+        game.status = 'game';
+        this.playerArr.push(player1)
     },
     begin2P() {
         const player1 = new Player();
-        const player2 = new Player();
+        player1.selector = 0
+        const player2 = new Player();        
+        player2.selector = 1
+        this.activePlayer = player1;
+        game.status = 'game';
+        this.playerArr.push(player1)
+        this.playerArr.push(player2)
     },
     begin3P() {
         const player1 = new Player();
+        player1.selector = 0        
         const player2 = new Player();
+        player2.selector = 1
         const player3 = new Player();
+        player3.selector = 2
+        this.activePlayer = player1;
+        game.status = 'game';
+        this.playerArr.push(player1)
+        this.playerArr.push(player2)
+        this.playerArr.push(player3)
     },
     begin4P() {
         const player1 = new Player();
+        player1.selector = 0
         const player2 = new Player();
+        player2.selector = 1
         const player3 = new Player();
+        player3.selector = 2
         const player4 = new Player();
+        player4.selector = 3
+        this.activePlayer = player1;
+        game.status = 'game';
+        this.playerArr.push(player1)
+        this.playerArr.push(player2)
+        this.playerArr.push(player3)
+        this.playerArr.push(player4)
     },
     pickVictor() {
         console.log('high score player recognized');
@@ -108,13 +137,21 @@ const game = {
         $('.c').text(this.questArr[qNum].c);
         $('.d').text(this.questArr[qNum].d);
     },
+    switchPlayer() {
+        nextPlayNum = activePlayer.selector += 1;
+        this.activePlayer = this.playerArr[nextPlayNum];
+    }
     clickAnswer() {
-        this.correctKey = this.questArr[qNum].correct
-        if(this.clicked.hasClass(this.correctKey)) {
-            this.activePlayer.points += 1;
+        if(this.discardedQuestions = this.quizLength) {
+            switchPlayer():
+        } else {
+            this.correctKey = this.questArr[qNum].correct
+            if(this.clicked.hasClass(this.correctKey)) {
+                this.activePlayer.points += 1;
+            }
+            this.discardedQuestions.push(game.questArr[qNum])
+            this.getQuestion();
         }
-        this.discardedQuestions.push(game.questArr[qNum])
-        this.getQuestion();
     }
 }
 
