@@ -2,15 +2,42 @@ h1, p	{
 	text-align: center;
 }
 
+h1 {
+	padding-top: 50px;
+	padding-bottom: 25px;
+}
+
+#scroll-zone {
+	position: relative;
+}
+
+#feeder {
+	position: relative;
+	z-index: 100;
+}
+
+#scroll-image	{
+	z-index: 50;
+	height:200px;
+	width: 450px;
+	position: absolute;
+	margin: 0 auto;
+}
+
 #painting {
-	height: 250px;
+	height: 150px;
 	background-color: navy;
-	width: 60%;
+	width: 40%;
  	margin: 0 auto;
+ 	border: 15px solid #321700;
 }
 
 #buttons {
 	text-align: center;
+	width: 70px;
+	height: 70px;
+	height: 70px;
+	margin: 0 auto;
 }
 
 #container {

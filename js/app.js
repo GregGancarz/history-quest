@@ -12,7 +12,6 @@
 
 // when all questions have been answered, users are presented their scores 
 // and a button that takes them back to the start menu screen.
-console.log('runnin');
 
 class Player {
 	constructor() {
@@ -21,67 +20,59 @@ class Player {
 	pickAnswer() {
 		console.log('answer picked');
 	}
+    initiateGame() {
+        console.log('player count picked');
+    }
+    returnToMain() {
+        //refresh page
+    }
 }
+
+class Question {
+    constructor() {
+        this.question = '';
+        a = '',
+        b = '',
+        c = '',
+        d = '',
+        correct = 'a'
+    }
+}   
 
 const game = {
     activePlayer: '',
     questionsAsked: 0,
+    victor: '', // player with high points
     status: '', // start-menu, quiz-active, round-over
-    questionKeys: [{
-        keyA: [{q1: [{
-                question: 'what time is it?',
-                a: 'aardvark',
-                b: 'batman',
-                c: 'charliehorse',
-                d: 'dog'
-            	}]
-        	},
-            {q2: {
-                question: 'who saw what happened?',
-                a: 'africa',
-                b: 'botswana',
-                c: 'cocaine',
-                d: 'devilish'
-            	}
-        	},
-            {q3: {
-                question: 'is there free food',
-                a: 'apes',
-                b: 'biggie',
-                c: 'carpathian',
-                d: 'dice'
-            	}
-        	}]}, 
-        {keyB: [{q1: {
-                question: 'what time is it?',
-                a: 'aardvark',
-                b: 'batman',
-                c: 'charliehorse',
-                d: 'dog'
-            	}
-        	},
-            {q2: {
-                question: 'who saw what happened?',
-                a: 'africa',
-                b: 'botswana',
-                c: 'cocaine',
-                d: 'devilish'
-            	}
-        	},
-            {q3: {
-                question: 'is there free food',
-                a: 'apes',
-                b: 'biggie',
-                c: 'carpathian',
-                d: 'dice'
-            	}
-     	   }
-     	   ]
-        }]
+    begin1P() {
+        console.log('1P game has begun');
+    },
+    begin2P() {
+        console.log('2P game has begun');
+    },
+    begin3P() {
+        console.log('3P game has begun');
+    },
+    begin4P() {
+        console.log('4P game has begun');
+    },
+    pickVictor() {
+        console.log('high score player recognized');
+    }
 }
-
-console.log(game.questionKeys[0].keyA[1].q2.question);
-
+    
+$('#a').on('click', () => {
+  game.begin1P();
+})
+$('#b').on('click', () => {
+  game.begin2P();
+})
+$('#c').on('click', () => {
+  game.begin3P();
+})
+$('#d').on('click', () => {
+  game.begin4P();
+})
 
 
 
