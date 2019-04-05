@@ -11,7 +11,7 @@ h1 {
 	position: relative;
 }
 
-#feeder {
+.feeder {
 	position: relative;
 	z-index: 100;
 }

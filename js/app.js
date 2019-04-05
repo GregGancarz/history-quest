@@ -19,10 +19,6 @@ class Player {
 	constructor() {
 		this.points = 0;
 	}
-    pickAnswer() {
-        console.log('answer picked');
-    }
-	
 }
 
 class Question {
@@ -40,37 +36,32 @@ class Question {
 
 const game = {
     activePlayer: '',
-    questionsAsked: 0,
+    discardedQuestions: [],
     victor: '', // player with high points
     status: '', // start-menu, quiz-active, round-over
     questArr: [],
+    correctKey: '',
     begin1P() {
         const player1 = new Player();
-        console.log(player1);
+        this.activePlayer = player1
+        console.log(this.activePlayer);
+        game.status = 'game'
+
     },
     begin2P() {
         const player1 = new Player();
         const player2 = new Player();
-        console.log(player1);
-        console.log(player2);
     },
     begin3P() {
         const player1 = new Player();
         const player2 = new Player();
         const player3 = new Player();
-        console.log(player1);
-        console.log(player2);
-        console.log(player3);
     },
     begin4P() {
         const player1 = new Player();
         const player2 = new Player();
         const player3 = new Player();
         const player4 = new Player();
-        console.log(player1);
-        console.log(player2);
-        console.log(player3);
-        console.log(player4);
     },
     pickVictor() {
         console.log('high score player recognized');
@@ -111,42 +102,82 @@ const game = {
         this.questArr.push(q15);
     },
     getQuestion() {
-        console.log(Math.floor(Math.random() * this.questArr.length));
         qNum = Math.floor(Math.random() * this.questArr.length);
-        console.log(this.questArr[qNum]);
-        $('#feeder').text(this.questArr[qNum].question);
-        $('#a').text(this.questArr[qNum].a);
-        $('#b').text(this.questArr[qNum].b);
-        $('#c').text(this.questArr[qNum].c);
-        $('#d').text(this.questArr[qNum].d);
-
+        $('.feeder').text(this.questArr[qNum].question);
+        $('.a').text(this.questArr[qNum].a);
+        $('.b').text(this.questArr[qNum].b);
+        $('.c').text(this.questArr[qNum].c);
+        $('.d').text(this.questArr[qNum].d);
     }
 }
 
-$('#a').on('click', () => {
+$('.a').on('click', (e) => {
+    const $clicked = $(e.target)
     if(game.status == '') {
         game.genQuestions();
         game.begin1P();
         game.getQuestion();
+        game.status = 'game'
+    } else if(game.status == 'game') {
+        game.correctKey = game.questArr[qNum].correct
+        if($clicked.hasClass(game.correctKey)) {
+            game.activePlayer.points += 1;
+            game.discardedQuestions.push(game.questArr[qNum])
+            game.getQuestion();
+        } else {
+            game.getQuestion();
+        }
     }
 })
-$('#b').on('click', () => {
+$('.b').on('click', (e) => {
+    const $clicked = $(e.target)
     if(game.status == '') {
         game.genQuestions();
-        game.begin2P();
+        game.begin1P();
+        game.getQuestion();
+        game.status = 'game'
+    } else if(game.status == 'game') {
+        game.correctKey = game.questArr[qNum].correct
+        if($clicked.hasClass(game.correctKey)) {
+            game.activePlayer.points += 1;
+            game.getQuestion();
+        } else {
+            game.getQuestion();
+        }
     }
 })
-$('#c').on('click', () => {
+$('.c').on('click', (e) => {
+    const $clicked = $(e.target)
     if(game.status == '') {
         game.genQuestions();
-        game.begin3P();
+        game.begin1P();
+        game.getQuestion();
+    } else if(game.status == 'game') {
+        game.correctKey = game.questArr[qNum].correct
+        if($clicked.hasClass(game.correctKey)) {
+            game.activePlayer.points += 1;
+            game.getQuestion();
+        } else {
+            game.getQuestion();
+        }
     }
 })
-$('#d').on('click', () => {
+$('.d').on('click', (e) => {
+    const $clicked = $(e.target)
     if(game.status == '') {
         game.genQuestions();
-        game.begin4P();
-    }   
+        game.begin1P();
+        game.getQuestion();
+        game.status = 'game'
+    } else if(game.status == 'game') {
+        game.correctKey = game.questArr[qNum].correct
+        if($clicked.hasClass(game.correctKey)) {
+            game.activePlayer.points += 1;
+            game.getQuestion();
+        } else {
+            game.getQuestion();
+        }
+    }
 })
 
 
