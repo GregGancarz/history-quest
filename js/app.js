@@ -82,6 +82,9 @@ const game = {
         this.playerArr.push(player4)
     },
     pickVictor() {
+        var names = ["Ben", "Joel", "Judy", "Anne"];
+        var scores = [88, 98, 77, 88];
+        var textDisplay;
         console.log('high score player recognized');
     },
     returnToMain() {
@@ -114,11 +117,11 @@ const game = {
         this.questArr.push(q12);
         const q13 = new Question('Ireland gained independence from Great Britain in what year?', '1590', '1686', '1891', '1921', 'd');
         this.questArr.push(q13);
-        const q14 = new Question('Which French King lost his head at the climax of the French Revolution', 'Charles X', 'Napoleon I', 'Louis XIV', 'Louis XVI', 'd');
+        const q14 = new Question('Which French King lost his head at the climax of the French Revolution?', 'Charles X', 'Napoleon I', 'Louis XIV', 'Louis XVI', 'd');
         this.questArr.push(q14);
         const q15 = new Question('Christopher Columbus first made landfall in what is now...?', 'Cuba', 'Haiti', 'Puerto Rico', 'The Bahamas', 'd');
         this.questArr.push(q15);
-        const q16 = new Question('The Russian Empire lost a major war against this Asian country around the turn of the 19th century', 'China', 'Mongolia', 'Vietnam', 'Japan', 'd');
+        const q16 = new Question('The Russian Empire lost a major war against this Asian country around the turn of the 19th century:', 'China', 'Mongolia', 'Vietnam', 'Japan', 'd');
         this.questArr.push(q16);
 
         const q17 = new Question('The ancient region of Gaul comprised much of what modern nation?', 'France', 'Mongolia', 'Germany', 'Turkey', 'a');
@@ -130,13 +133,13 @@ const game = {
         const q20 = new Question('Had he been born today, religious reformer Martin Luther would have lived in which European nation?', 'Poland', 'England', 'Italy', 'Germany', 'd');
         this.questArr.push(q20);
 
-        const q21 = new Question('China regained control of Hong Kong from this nation, after it\'s 99 year lease of the island expired in 1997', 'Great Britain', 'France', 'Japan', 'Australia', 'a');
+        const q21 = new Question('China regained control of Hong Kong from this nation, after it\'s 99 year lease of the island expired in 1997:', 'Great Britain', 'France', 'Japan', 'Australia', 'a');
         this.questArr.push(q21);
         const q22 = new Question('The War of the Roses was a dynastic struggle fought over the throne of which kingdom?', 'France', 'England', 'Bohemia', 'Sweden', 'b');
         this.questArr.push(q22);
-        const q23 = new Question('Lasting from 1636 until 1912, this was the last dynasty to rule China', 'Han', 'Shang', 'Qing', 'Tang', 'c');
+        const q23 = new Question('Lasting from 1636 until 1912, this was the last dynasty to rule China:', 'Han', 'Shang', 'Qing', 'Tang', 'c');
         this.questArr.push(q23);
-        const q24 = new Question('Thanks to series of partitions, this European nation ceased to exist from 1795, until 1918, when it regained its sovereignty', 'Bulgaria', 'Switzerland', 'Denmark', 'Poland', 'd');
+        const q24 = new Question('Thanks to series of partitions, this European nation ceased to exist from 1795, until 1918, when it regained its sovereignty:', 'Bulgaria', 'Switzerland', 'Denmark', 'Poland', 'd');
         this.questArr.push(q24);
     },
     getQuestion() {
@@ -191,6 +194,7 @@ const game = {
         $('.b').hide();
         $('.c').hide();
         $('.d').hide();
+
     },
     getQLimits() {
         this.status = 'setLimit';
