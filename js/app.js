@@ -43,7 +43,7 @@ const game = {
     questArr: [],
     qToMove: [],
     discardedQuestions: [],
-    quizLength: 4,
+    quizLength: '',
     victor: '', // player with high points
     status: '',
     correctKey: '',
@@ -120,6 +120,24 @@ const game = {
         this.questArr.push(q15);
         const q16 = new Question('The Russian Empire lost a major war against this Asian country around the turn of the 19th century', 'China', 'Mongolia', 'Vietnam', 'Japan', 'd');
         this.questArr.push(q16);
+
+        const q17 = new Question('The ancient region of Gaul comprised much of what modern nation?', 'France', 'Mongolia', 'Germany', 'Turkey', 'a');
+        this.questArr.push(q17);
+        const q18 = new Question('Which of the following men served as the 8th president of the United States?', 'Abraham Lincoln', 'Martin Van Buren', 'Benjamin Frankin', 'Jonathan Marston', 'b');
+        this.questArr.push(q18);    
+        const q19 = new Question('Although Italian by birth, Colombus sailed under the colors of which European nation?', 'England', 'Portugal', 'Spain', 'Scotland', 'c');
+        this.questArr.push(q19);
+        const q20 = new Question('Had he been born today, religious reformer Martin Luther would have lived in which European nation?', 'Poland', 'England', 'Italy', 'Germany', 'd');
+        this.questArr.push(q20);
+
+        const q21 = new Question('China regained control of Hong Kong from this nation, after it\'s 99 year lease of the island expired in 1997', 'Great Britain', 'France', 'Japan', 'Australia', 'a');
+        this.questArr.push(q21);
+        const q22 = new Question('The War of the Roses was a dynastic struggle fought over the throne of which kingdom?', 'France', 'England', 'Bohemia', 'Sweden', 'b');
+        this.questArr.push(q22);
+        const q23 = new Question('Lasting from 1636 until 1912, this was the last dynasty to rule China', 'Han', 'Shang', 'Qing', 'Tang', 'c');
+        this.questArr.push(q23);
+        const q24 = new Question('Thanks to series of partitions, this European nation ceased to exist from 1795, until 1918, when it regained its sovereignty', 'Bulgaria', 'Switzerland', 'Denmark', 'Poland', 'd');
+        this.questArr.push(q24);
     },
     getQuestion() {
         game.status = 'game';
@@ -147,24 +165,15 @@ const game = {
         $('.d').show();
     },
     cleanQuestArr() {
-        console.log('cleaning invoked');
         qToMove = this.questArr.splice(this.questArr[(this.qNum)], 1);
         this.discardedQuestions.push(this.qToMove);
         qToMove = [];
-        console.log(`the array after splicing`)
-        console.log(this.questArr);
-        console.log(`the array length after splicing: ${this.questArr.length}`);
     },
     clickAnswer() {
         this.correctKey = this.questArr[this.qNum].correct
         if(this.clicked.hasClass(this.correctKey)) {
             this.activePlayer.points += 1;
         };
-        console.log('the array before cleaning')
-        console.log(this.questArr);
-        console.log(`the index selector: ${this.qNum}`);
-        console.log(`the selected question that should be removed:`) 
-        console.log(this.questArr[this.qNum]);
         this.cleanQuestArr();
         if(this.discardedQuestions.length % (this.quizLength) === 0 && (this.activePlayer.selector + 1) < this.playerArr.length) {
             this.switchPlayer();
@@ -176,13 +185,20 @@ const game = {
         
     },
     getScores() {
-        console.log("getScores invoked");
         this.status = 'end';
         $('.feeder').text(`All players have completed their quizzes and Player X is the winner with a high score of Y!`);
         $('.a').text('Play again');
         $('.b').hide();
         $('.c').hide();
         $('.d').hide();
+    },
+    getQLimits() {
+        this.status = 'setLimit';
+        $('.feeder').text(`Select how many questions each player will have...`);
+        $('.a').text(2);
+        $('.b').text(4);
+        $('.c').text(6);
+        $('.d').text(8);
     }
 }
 
@@ -192,8 +208,11 @@ $('.a').on('click', (e) => {
     $clicked = $(e.target);
     game.clicked = $clicked;
     if(game.status == '') {
+        game.getQLimits();
+    } else if(game.status == 'setLimit') {
+        game.quizLength = game.clicked.text()
         game.genQuestions();
-        game.begin1P();
+        game.begin1P();  //move up to the first button and make it more dry.
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
@@ -209,8 +228,11 @@ $('.b').on('click', (e) => {
     $clicked = $(e.target);
     game.clicked = $clicked;
     if(game.status == '') {
+        game.getQLimits();
+    } else if(game.status == 'setLimit') {
+        game.quizLength = parseInt(game.clicked.text());        
         game.genQuestions();
-        game.begin2P();
+        game.begin2P(); //move up to the first button and make it more dry.
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
@@ -221,8 +243,11 @@ $('.c').on('click', (e) => {
     $clicked = $(e.target);
     game.clicked = $clicked;
     if(game.status == '') {
+        game.getQLimits();
+    } else if(game.status == 'setLimit') {
+        game.quizLength = game.clicked.text()
         game.genQuestions();
-        game.begin3P();
+        game.begin3P(); //move up to the first button and make it more dry.
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
@@ -233,8 +258,11 @@ $('.d').on('click', (e) => {
     $clicked = $(e.target);
     game.clicked = $clicked;
     if(game.status == '') {
+        game.getQLimits();
+    } else if(game.status == 'setLimit') {
+        game.quizLength = game.clicked.text()
         game.genQuestions();
-        game.begin4P();
+        game.begin4P(); //move up to the first button and make it more dry.
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
