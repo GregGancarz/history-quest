@@ -43,6 +43,7 @@ const game = {
     questArr: [],
     qToMove: [],
     discardedQuestions: [],
+    playerPoints: [],
     quizLength: '',
     victor: '', // player with high points
     status: '',
@@ -80,12 +81,6 @@ const game = {
         this.playerArr.push(player2)
         this.playerArr.push(player3)
         this.playerArr.push(player4)
-    },
-    pickVictor() {
-        var names = ["Ben", "Joel", "Judy", "Anne"];
-        var scores = [88, 98, 77, 88];
-        var textDisplay;
-        console.log('high score player recognized');
     },
     returnToMain() {
         location.reload();
@@ -152,6 +147,7 @@ const game = {
         $('.d').text(this.questArr[this.qNum].d);
     },
     switchPlayer() {
+        this.playerPoints.push(this.activePlayer.points);
         nextPlayNum = (this.activePlayer.selector += 1);
         this.activePlayer = this.playerArr[nextPlayNum];
         this.status = 'pause';
@@ -188,8 +184,12 @@ const game = {
         
     },
     getScores() {
+        this.playerPoints.push(this.activePlayer.points);
         this.status = 'end';
-        $('.feeder').text(`All players have completed their quizzes and Player X is the winner with a high score of Y!`);
+        const highScore = Math.max.apply(Math, this.playerPoints);     // gives the highest score
+        const scoreIndex = this.playerPoints.indexOf(highScore);       // gives the location of the highest score
+        this.victor = this.playerArr[scoreIndex];              // gets the name at the same location
+        $('.feeder').text(`All players have completed their quizzes and ${this.victor.name} is the winner with a high score of ${highScore}!`);
         $('.a').text('Play again');
         $('.b').hide();
         $('.c').hide();
