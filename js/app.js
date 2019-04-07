@@ -208,11 +208,11 @@ $('.a').on('click', (e) => {
     $clicked = $(e.target);
     game.clicked = $clicked;
     if(game.status == '') {
+        game.begin1P();
         game.getQLimits();
     } else if(game.status == 'setLimit') {
         game.quizLength = game.clicked.text()
         game.genQuestions();
-        game.begin1P();  //move up to the first button and make it more dry.
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
@@ -228,11 +228,11 @@ $('.b').on('click', (e) => {
     $clicked = $(e.target);
     game.clicked = $clicked;
     if(game.status == '') {
+        game.begin2P();
         game.getQLimits();
     } else if(game.status == 'setLimit') {
         game.quizLength = parseInt(game.clicked.text());        
         game.genQuestions();
-        game.begin2P(); //move up to the first button and make it more dry.
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
@@ -243,11 +243,11 @@ $('.c').on('click', (e) => {
     $clicked = $(e.target);
     game.clicked = $clicked;
     if(game.status == '') {
+        game.begin3P();
         game.getQLimits();
     } else if(game.status == 'setLimit') {
         game.quizLength = game.clicked.text()
         game.genQuestions();
-        game.begin3P(); //move up to the first button and make it more dry.
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
@@ -258,11 +258,11 @@ $('.d').on('click', (e) => {
     $clicked = $(e.target);
     game.clicked = $clicked;
     if(game.status == '') {
+        game.begin4P();
         game.getQLimits();
     } else if(game.status == 'setLimit') {
         game.quizLength = game.clicked.text()
         game.genQuestions();
-        game.begin4P(); //move up to the first button and make it more dry.
         game.getQuestion();
     } else if(game.status == 'game') {
         game.clickAnswer();
