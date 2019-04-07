@@ -189,7 +189,11 @@ const game = {
         const highScore = Math.max.apply(Math, this.playerPoints);     // gives the highest score
         const scoreIndex = this.playerPoints.indexOf(highScore);       // gives the location of the highest score
         this.victor = this.playerArr[scoreIndex];              // gets the name at the same location
-        $('.feeder').text(`All players have completed their quizzes and ${this.victor.name} is the winner with a high score of ${highScore}!`);
+        if(this.playerArr.length == 1){
+            $('.feeder').text(`${this.victor.name}, your score is ${highScore}!`);
+        } else {
+            $('.feeder').text(`All players have completed their quizzes and ${this.victor.name} is the winner with a high score of ${highScore}!`);
+        };
         $('.a').text('Play again');
         $('.b').hide();
         $('.c').hide();
