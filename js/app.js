@@ -100,17 +100,17 @@ const game = {
         this.questArr.push(q3);
         const q4 = new Question('Which of the following men is known as the "father of Texas"?', 'Stephen Austin', 'Sam Houston', 'Alexander Dalls', 'Davey Crockett', 'a', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Kerr_county_tx_courthouse_2015.jpg/1200px-Kerr_county_tx_courthouse_2015.jpg');
         this.questArr.push(q4);
-        const q5 = new Question('Julius Caesar was assassinated in what year?', '10 AD', '44 BC', '112 AD', '34 BC', 'b');
+        const q5 = new Question('Julius Caesar was assassinated in what year?', '10 AD', '44 BC', '112 AD', '34 BC', 'b', 'http://www.needcoffee.com/wp-content/uploads/2017/05/assassination-julius-caesar.jpg');
         this.questArr.push(q5);
-        const q6 = new Question('Much of what is now Illinois was originally explored and settled by which Imperial Power?', 'England', 'France', 'Spain', 'Portugal', 'b');
+        const q6 = new Question('Much of what is now Illinois was originally explored and settled by which Imperial Power?', 'England', 'France', 'Spain', 'Portugal', 'b', 'https://media-cdn.tripadvisor.com/media/photo-s/02/97/65/5e/kids-play-fort.jpg');
         this.questArr.push(q6);
-        const q7 = new Question('The Great War spanned which years?', '1909 - 1911', '1914-1918', '1904-1912', '1939-1945', 'b');
+        const q7 = new Question('The Great War spanned which years?', '1909 - 1911', '1914-1918', '1904-1912', '1939-1945', 'b', 'https://metrouk2.files.wordpress.com/2016/06/ad_211323456.jpg?quality=80&strip=all&strip=all');
         this.questArr.push(q7);
-        const q8 = new Question('King Henry VIII ruled which Kingdom?', 'France', 'England', 'Spain', 'Holland', 'b');
+        const q8 = new Question('King Henry VIII ruled which Kingdom?', 'France', 'England', 'Spain', 'Holland', 'b', 'http://www.zocalopublicsquare.org/wp-content/uploads/2015/11/Henry-VIII_lead-image.jpg');
         this.questArr.push(q8);
-        const q9 = new Question('The Chicago fire occurred in what year?', '1903', '1899', '1871', '1798', 'c');
+        const q9 = new Question('The Chicago fire occurred in what year?', '1903', '1899', '1871', '1798', 'c', 'http://withtimetospare.com/wp-content/uploads/2014/10/chicago-fire.jpg');
         this.questArr.push(q9);
-        const q10 = new Question('Thomas Jefferson died on the same day in the same year as which other founding father?', 'George Washington', 'Ben Frankin', 'John Adams', 'James Madison', 'c');
+        const q10 = new Question('Thomas Jefferson died on the same day in the same year as which other founding father?', 'George Washington', 'Ben Frankin', 'John Adams', 'James Madison', 'c', 'http://presidentialpetmuseum.com/wp-content/uploads/2016/02/thomas-jefferson.jpg');
         this.questArr.push(q10);
         const q11 = new Question('Puerto Rico gained independence from Spain during which US president\'s term?', 'Theodore Roosevelt', 'William Taft', 'William McKinley', 'Woodrow Wilson', 'c');
         this.questArr.push(q11);
@@ -187,7 +187,7 @@ const game = {
         $('.b').text(this.questArr[this.qNum].b);
         $('.c').text(this.questArr[this.qNum].c);
         $('.d').text(this.questArr[this.qNum].d);
-        $('img').attr('src', 'this.questArr[this.qNum].link')
+        $('img').attr('src', 'game.questArr[game.qNum].link')
 
     },
     clickAnswer() {
