@@ -90,6 +90,8 @@ button {
 	width: 275px;
 	margin: 1px 4px;
 	font-size: 17px;
+	text-shadow: .5px .5px 1px #525252;
+
 }
 
 #container {
