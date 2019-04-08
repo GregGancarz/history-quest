@@ -112,71 +112,71 @@ const game = {
         this.questArr.push(q9);
         const q10 = new Question('Thomas Jefferson died on the same day in the same year as which other founding father?', 'George Washington', 'Ben Frankin', 'John Adams', 'James Madison', 'c', 'http://presidentialpetmuseum.com/wp-content/uploads/2016/02/thomas-jefferson.jpg');
         this.questArr.push(q10);
-        const q11 = new Question('Puerto Rico gained independence from Spain during which US president\'s term?', 'Theodore Roosevelt', 'William Taft', 'William McKinley', 'Woodrow Wilson', 'c');
+        const q11 = new Question('Puerto Rico gained independence from Spain during which US president\'s term?', 'Theodore Roosevelt', 'William Taft', 'William McKinley', 'Woodrow Wilson', 'c', 'https://thezimmermanntelegram.files.wordpress.com/2013/03/spanish-american-war.jpg');
         this.questArr.push(q11);
-        const q12= new Question('Dom Pedro I was the founder of what nation?', 'Mexico', 'Bolivia', 'Brazil', 'Chile', 'c');
+        const q12= new Question('Dom Pedro I was the founder of what nation?', 'Mexico', 'Bolivia', 'Brazil', 'Chile', 'c', 'https://rodrigozeviani.files.wordpress.com/2012/10/dom-pedro-i.jpg');
         this.questArr.push(q12);
-        const q13 = new Question('Ireland gained independence from Great Britain in what year?', '1590', '1686', '1891', '1921', 'd');
+        const q13 = new Question('Ireland gained independence from Great Britain in what year?', '1590', '1686', '1891', '1921', 'd', 'https://www.elmersflag.com/wp-content/uploads/2017/03/irish-flag14.jpg');
         this.questArr.push(q13);
-        const q14 = new Question('Which French King lost his head at the climax of the French Revolution?', 'Louis XIV', 'Napoleon I', 'Charles X', 'Louis XVI', 'd');
+        const q14 = new Question('Which French King lost his head at the climax of the French Revolution?', 'Louis XIV', 'Napoleon I', 'Charles X', 'Louis XVI', 'd', "http://s3.amazonaws.com/s3.timetoast.com/public/uploads/photos/8092999/Louis'_execution.jpg?1478327015");
         this.questArr.push(q14);
-        const q15 = new Question('Christopher Columbus first made landfall in what is now...?', 'Cuba', 'Haiti', 'Puerto Rico', 'The Bahamas', 'd');
+        const q15 = new Question('Christopher Columbus first made landfall in what is now...?', 'Cuba', 'Haiti', 'Puerto Rico', 'The Bahamas', 'd', 'https://www.rts.ch/2014/05/13/12/34/5844329.image');
         this.questArr.push(q15);
-        const q16 = new Question('The Russian Empire lost a major war against this Asian country around the turn of the 19th century:', 'China', 'Mongolia', 'Vietnam', 'Japan', 'd');
+        const q16 = new Question('The Russian Empire lost a major war against this Asian country at the beginning 20th century:', 'China', 'Mongolia', 'Vietnam', 'Japan', 'd', 'https://i.pinimg.com/originals/dc/23/d5/dc23d52931269175ed029e4e83298c86.jpg');
         this.questArr.push(q16);
 
-        const q17 = new Question('The ancient region of Gaul comprised much of what modern nation?', 'France', 'Mongolia', 'Germany', 'Turkey', 'a');
+        const q17 = new Question('The ancient region of Gaul comprised much of what modern nation?', 'France', 'Mongolia', 'Germany', 'Turkey', 'a', 'https://news-cdn.softpedia.com/images/news2/Total-War-Rome-II-Caesar-in-Gaul-Review-411257-2.jpg');
         this.questArr.push(q17);
-        const q18 = new Question('Which of the following men served as the 8th president of the United States?', 'Abraham Lincoln', 'Martin Van Buren', 'Benjamin Frankin', 'Jonathan Marston', 'b');
+        const q18 = new Question('Which of the following men served as the 8th president of the United States?', 'Abraham Lincoln', 'Martin Van Buren', 'Benjamin Frankin', 'Jonathan Marston', 'b', 'https://graphicarts.princeton.edu/wp-content/uploads/sites/158/2016/04/bell-capital.jpg');
         this.questArr.push(q18);    
-        const q19 = new Question('Although Italian by birth, Columbus sailed under the colors of which European nation?', 'England', 'Portugal', 'Spain', 'Scotland', 'c');
+        const q19 = new Question('Although Italian by birth, Columbus sailed under the colors of which European nation?', 'England', 'Portugal', 'Spain', 'Scotland', 'c', 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/vintage-antique-map-of-europe-french-origin-circa-1700-on-worn-distressed-parchment-canvas-design-turnpike.jpg');
         this.questArr.push(q19);
-        const q20 = new Question('Had he been born today, religious reformer Martin Luther would have lived in which European nation?', 'Poland', 'England', 'Italy', 'Germany', 'd');
+        const q20 = new Question('Had he been born today, religious reformer Martin Luther would have been present in which European nation?', 'Poland', 'England', 'Italy', 'Germany', 'd', 'https://lexloiz.files.wordpress.com/2008/12/martin-luther-by-lucas-cranach.jpg');
         this.questArr.push(q20);
 
-        const q21 = new Question('China regained control of Hong Kong from this nation, after it\'s 99 year lease of the island expired in 1997:', 'Great Britain', 'France', 'Japan', 'Australia', 'a');
+        const q21 = new Question('China regained control of Hong Kong from this nation, after it\'s 99 year lease of the island expired in 1997:', 'Great Britain', 'France', 'Japan', 'Australia', 'a', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Hong_Kong_Island_Skyline_201108.jpg/1200px-Hong_Kong_Island_Skyline_201108.jpg');
         this.questArr.push(q21);
-        const q22 = new Question('The War of the Roses was a dynastic struggle fought over the throne of which kingdom?', 'France', 'England', 'Bohemia', 'Sweden', 'b');
+        const q22 = new Question('The War of the Roses was a dynastic struggle fought over the throne of which kingdom?', 'France', 'England', 'Bohemia', 'Sweden', 'b', 'https://www.anglotopia.net/wp-content/uploads/2015/02/1340710472_queens-54.jpg');
         this.questArr.push(q22);
-        const q23 = new Question('Lasting from 1636 until 1912, this was the last dynasty to rule China:', 'Han', 'Shang', 'Qing', 'Tang', 'c');
+        const q23 = new Question('Lasting from 1636 until 1912, this was the last dynasty to rule China:', 'Han', 'Shang', 'Qing', 'Tang', 'c', 'https://www.worldatlas.com/r/w728-h425-c728x425/upload/0f/a9/61/kangxi-emperor.jpg');
         this.questArr.push(q23);
-        const q24 = new Question('Thanks to series of partitions, this European nation ceased to exist from 1795, until 1918, when it regained its sovereignty:', 'Bulgaria', 'Switzerland', 'Denmark', 'Poland', 'd');
+        const q24 = new Question('Thanks to series of partitions, this European nation ceased to exist from 1795, until 1918, when it regained its sovereignty:', 'Bulgaria', 'Switzerland', 'Denmark', 'Poland', 'd', 'https://upload.wikimedia.org/wikipedia/commons/9/91/Rok_1863_Polonia.JPG');
         this.questArr.push(q24);
 
-        const q25 = new Question('John Wilkes Booth shouted "Sic semper tyrannis" after shooting Lincoln. The phrase is Latin and means:', 'Thus always to tyrants', 'For the resumption of tyranny', 'the South will rise again', 'I came, I saw, I conquered', 'a');
+        const q25 = new Question('John Wilkes Booth shouted "Sic semper tyrannis" after shooting Lincoln. The phrase is Latin and means:', 'Thus always to tyrants', 'For the resumption of tyranny', 'the South will rise again', 'I came, I saw, I conquered', 'a', 'https://www.motherjones.com/wp-content/uploads/lincoln.jpeg');
         this.questArr.push(q25);
-        const q26 = new Question('in 1830, Greece gained its independence after centuries of brutal subjugation under which nation?', 'Bulgaria', 'the Ottoman Caliphate', 'Hungary', 'Romania', 'b');
+        const q26 = new Question('in 1830, Greece gained its independence after centuries of brutal subjugation under which nation?', 'Bulgaria', 'The Ottoman Caliphate', 'Hungary', 'Romania', 'b', 'https://xaameriki.files.wordpress.com/2012/10/greek.jpg');
         this.questArr.push(q26);
-        const q27 = new Question('Casimir Pulaski, one of only eight people to be awarded honorary United States citizenship, was a Polish national who gained fame as a general in the American Revolution. At one point, he saved the life of which founding father?', 'Alexander Hamilton', 'Samuel Adams', 'George Washington', 'Thomas Jefferson', 'c');
+        const q27 = new Question('Casimir Pulaski, a Polish national who gained fame as a general in the American Revolution. At one point, he saved the life of which founding father?', 'Alexander Hamilton', 'Samuel Adams', 'George Washington', 'Thomas Jefferson', 'c', 'https://upload.wikimedia.org/wikipedia/commons/4/46/Kazimierz_Pu%C5%82aski.PNG');
         this.questArr.push(q27);
-        const q28 = new Question('Saint Ignatius of Loyola, who founded the Catholic Holy Order of the Jesuits in 16th century, was a native of which land?', 'Italy', 'England', 'Greece', 'Spain', 'd');
+        const q28 = new Question('Saint Ignatius of Loyola, who founded the Catholic Holy Order of the Jesuits in 16th century, was a native of which land?', 'Italy', 'England', 'Greece', 'Spain', 'd', 'http://3.bp.blogspot.com/-enZ03I67CT0/UfiW5t4yhuI/AAAAAAAABhI/N1rUOVzM328/s1600/st_ignatius.jpg');
         this.questArr.push(q28);
 
-        const q29 = new Question('With the backing of the US, Panama gained independence from this nation in 1903:', 'Colombia', 'Spain', 'Costa Rica', 'Nicaraugua', 'a');
+        const q29 = new Question('With the backing of the US, Panama gained independence from this nation in 1903:', 'Colombia', 'Spain', 'Costa Rica', 'Nicaraugua', 'a', 'https://blog.bulldozair.com/wp-content/uploads/2017/01/the-journey-of-the-panama-canal-construction.jpg');
         this.questArr.push(q29);
-        const q30 = new Question('World War II was triggered in 1939 after Germany\'s invasion of whch nation?', 'Holland', 'Poland', 'Austria', 'France', 'b');
+        const q30 = new Question('World War II was triggered in 1939 after Germany\'s invasion of whch nation?', 'Holland', 'Poland', 'Austria', 'France', 'b', 'https://www.dw.com/image/17881034_303.jpg');
         this.questArr.push(q30);
-        const q31 = new Question('Vincent Van Gogh was an impressionist painter hailing from which country?', 'France', 'Ireland', 'The Netherlands', 'Austria', 'c');
+        const q31 = new Question('Vincent Van Gogh was an impressionist painter hailing from which country?', 'France', 'Ireland', 'The Netherlands', 'Austria', 'c', 'https://www.trbimg.com/img-56bbafba/turbine/ct-ent-0204-van-gogh-bedrooms-art-institute-20160210');
         this.questArr.push(q31);
-        const q32 = new Question('Which of the following nations remained neutral and uninvolved in World War II?', 'Great Britain', 'Italy', 'Greece', 'Switzerland', 'd');
+        const q32 = new Question('Which of the following nations remained neutral and uninvolved in World War II?', 'Great Britain', 'Italy', 'Greece', 'Switzerland', 'd', 'https://i.pinimg.com/originals/70/1f/cf/701fcfd98e817d35c554d3227f2510a7.jpg');
         this.questArr.push(q32);
 
-        const q33 = new Question('Alexander the Great hailed from which ancient region?', 'Greece', 'Italy', 'Dalmatia', 'Thrace', 'a');
+        const q33 = new Question('Alexander the Great hailed from which ancient region?', 'Greece', 'Italy', 'Dalmatia', 'Thrace', 'a', 'http://i.huffpost.com/gen/2275304/images/o-ALEXANDER-THE-GREAT-facebook.jpg');
         this.questArr.push(q33);
-        const q34 = new Question('Southern Rhodesia became what country in 1980?', 'South Africa', 'Zimbabwe', 'Zambia', 'Botswana', 'b');
+        const q34 = new Question('Southern Rhodesia became what country in 1980?', 'South Africa', 'Zimbabwe', 'Zambia', 'Botswana', 'b', 'https://78.media.tumblr.com/824d98b5dfce7ebfb3da80d9c01904d2/tumblr_mj9jjgcbpr1ro7afco1_500.jpg');
         this.questArr.push(q34);
-        const q35 = new Question('Founded in 1636, which is the oldest University in the USA?', 'Cornell', 'Princeton', 'Harvard', 'Yale', 'c');
+        const q35 = new Question('Founded in 1636, which is the oldest University in the USA?', 'Cornell', 'Princeton', 'Harvard', 'Yale', 'c', 'http://images.fineartamerica.com/images-medium-large-5/harvard-college-ca-1767-from-left-everett.jpg');
         this.questArr.push(q35);
-        const q36 = new Question('Brazil was originally a colony of which nation?', 'England', 'Spain', 'Holland', 'Portugal', 'd');
+        const q36 = new Question('Brazil was originally a colony of which nation?', 'England', 'Spain', 'Holland', 'Portugal', 'd', 'http://sites.jmu.edu/migrationflows/files/2016/04/French-colonial-map-of-Brazil.jpg');
         this.questArr.push(q36);
 
-        const q37 = new Question('Jamestown, the first permanent English Colony in North America, was founded in which future state?', 'Virginia', 'Delaware', 'Rhode Island', 'New Jersey', 'a');
+        const q37 = new Question('Jamestown, the first permanent English Colony in North America, was founded in which future state?', 'Virginia', 'Delaware', 'Rhode Island', 'New Jersey', 'a', 'http://www.virginiaplaces.org/vacities/graphics/jamestownbuilt.png');
         this.questArr.push(q37);
-        const q38 = new Question('What was the name of the pandemic which killed over 1% of the world\'s population in 1918? Spanish Flu', 'Small pox', 'Spanish flu', 'Bubonic plague', 'Scarlet fever', 'b');
+        const q38 = new Question('What was the name of the pandemic which killed over 1% of the world\'s population in 1918? Spanish Flu', 'Small pox', 'Spanish flu', 'Bubonic plague', 'Scarlet fever', 'b', 'https://timedotcom.files.wordpress.com/2014/10/141001-spanish-flu-03.jpg');
         this.questArr.push(q38);
-        const q39 = new Question('Which explorer was the first to cross the Pacific Ocean?', 'Francis Drake', 'Hernan Cortez', 'Ferdinand Magellan', 'Chirstopher Columbus', 'd');
+        const q39 = new Question('Which explorer was the first to cross the Pacific Ocean?', 'Francis Drake', 'Hernan Cortez', 'Ferdinand Magellan', 'Chirstopher Columbus', 'd', 'https://www.iro.umontreal.ca/~vaucher/History/Ships_Discovery/Ships/Carrack1.jpg');
         this.questArr.push(q39);
-        const q40 = new Question('What 19th-century president erroneously noted: "The ballot is stronger than the bullet"?', 'Andrew Jackson', 'William McKinley', 'Zachary Taylor', 'Abraham Lincoln', 'd');
+        const q40 = new Question('What 19th-century president erroneously noted: "The ballot is stronger than the bullet"?', 'Andrew Jackson', 'William McKinley', 'Zachary Taylor', 'Abraham Lincoln', 'd', 'https://thumbs-media.smithsonianmag.com/filer/04/f8/04f87473-9755-43d4-a3d3-1c5b7d50941e/march-2015-booth-revolver4.jpg__800x600_q85_crop.jpg');
         this.questArr.push(q40);
     },
     getQuestion() {
@@ -187,7 +187,7 @@ const game = {
         $('.b').text(this.questArr[this.qNum].b);
         $('.c').text(this.questArr[this.qNum].c);
         $('.d').text(this.questArr[this.qNum].d);
-        $('img').attr('src', 'game.questArr[game.qNum].link')
+        $('img').attr('src', `${game.questArr[game.qNum].link}`)
 
     },
     clickAnswer() {
