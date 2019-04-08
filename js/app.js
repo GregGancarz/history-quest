@@ -25,13 +25,14 @@ class Player {
 }
 
 class Question {
-    constructor(question, a, b, c, d, correct) {
+    constructor(question, a, b, c, d, correct, link) {
         this.question = question;
         this.a = a;
         this.b = b;
         this.c = c;
         this.d = d;
-        this.correct = correct
+        this.correct = correct;
+        this.link = link;
     }
 }   
 
@@ -45,7 +46,6 @@ const game = {
     playerPoints: [],
     quizLength: '',
     status: '',
-    correctKey: '',
     clicked: '',
     qNum: '',
 
@@ -92,13 +92,13 @@ const game = {
         $('.d').text(10);
     },
     genQuestions() {
-        const q1 = new Question('Catherine the Great ruled what country?', 'Russia', 'France', 'Germany', 'England', 'a');
+        const q1 = new Question('Catherine the Great ruled what country?', 'Russia', 'France', 'Germany', 'England', 'a', 'https://www.thefamouspeople.com/profiles/images/catherine-the-great-4.jpg');
         this.questArr.push(q1);
-        const q2 = new Question('During which year did Christopher Columbus first arrive in the Americas?', '1492', '1503', '1483', '1514', 'a');
+        const q2 = new Question('During which year did Christopher Columbus first arrive in the Americas?', '1492', '1503', '1483', '1514', 'a', 'http://www.latinamericanstudies.org/cuba/colon-desembarco.jpg');
         this.questArr.push(q2);
-        const q3 = new Question('The Islamic conquest of Spain was initiated by which Muslim caliphate?', 'Umayyad', 'Rashidun', 'Abbasid', 'Ottoman', 'a');
+        const q3 = new Question('The Islamic conquest of Spain was initiated by which Muslim caliphate?', 'Umayyad', 'Rashidun', 'Abbasid', 'Ottoman', 'a', 'https://i.pinimg.com/originals/62/1c/29/621c29589b4cbd3b4834b83a5efe9b26.jpg');
         this.questArr.push(q3);
-        const q4 = new Question('Which of the following men is known as the "father of Texas"?', 'Stephen Austin', 'Sam Houston', 'Alexander Dalls', 'Davey Crockett', 'a');
+        const q4 = new Question('Which of the following men is known as the "father of Texas"?', 'Stephen Austin', 'Sam Houston', 'Alexander Dalls', 'Davey Crockett', 'a', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Kerr_county_tx_courthouse_2015.jpg/1200px-Kerr_county_tx_courthouse_2015.jpg');
         this.questArr.push(q4);
         const q5 = new Question('Julius Caesar was assassinated in what year?', '10 AD', '44 BC', '112 AD', '34 BC', 'b');
         this.questArr.push(q5);
@@ -118,7 +118,7 @@ const game = {
         this.questArr.push(q12);
         const q13 = new Question('Ireland gained independence from Great Britain in what year?', '1590', '1686', '1891', '1921', 'd');
         this.questArr.push(q13);
-        const q14 = new Question('Which French King lost his head at the climax of the French Revolution?', 'Charles X', 'Napoleon I', 'Louis XIV', 'Louis XVI', 'd');
+        const q14 = new Question('Which French King lost his head at the climax of the French Revolution?', 'Louis XIV', 'Napoleon I', 'Charles X', 'Louis XVI', 'd');
         this.questArr.push(q14);
         const q15 = new Question('Christopher Columbus first made landfall in what is now...?', 'Cuba', 'Haiti', 'Puerto Rico', 'The Bahamas', 'd');
         this.questArr.push(q15);
@@ -187,10 +187,12 @@ const game = {
         $('.b').text(this.questArr[this.qNum].b);
         $('.c').text(this.questArr[this.qNum].c);
         $('.d').text(this.questArr[this.qNum].d);
+        $('img').attr('src', 'this.questArr[this.qNum].link')
+
     },
     clickAnswer() {
-        this.correctKey = this.questArr[this.qNum].correct
-        if(this.clicked.hasClass(this.correctKey)) {
+        const correctKey = this.questArr[this.qNum].correct
+        if(this.clicked.hasClass(correctKey)) {
             this.activePlayer.points += 1;
         };
         this.cleanQuestArr();
@@ -214,7 +216,6 @@ const game = {
         $('.d').hide();
     },
     cleanQuestArr() {
-        // 
         this.qToMove = this.questArr.splice(this.qNum, 1);
         this.discardedQuestions.push(this.qToMove);
         this.qToMove = [];
