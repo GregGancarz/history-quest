@@ -44,7 +44,6 @@ const game = {
     discardedQuestions: [],
     playerPoints: [],
     quizLength: '',
-    victor: '',
     status: '',
     correctKey: '',
     clicked: '',
@@ -168,12 +167,12 @@ const game = {
         this.questArr.push(q34);
         const q35 = new Question('Founded in 1636, which is the oldest University in the USA?', 'Cornell', 'Princeton', 'Harvard', 'Yale', 'c');
         this.questArr.push(q35);
-        const q36 = new Question('Brazil was originally a colony of which nation?', 'England', 'Spain', 'Holland', 'Brazil', 'd');
+        const q36 = new Question('Brazil was originally a colony of which nation?', 'England', 'Spain', 'Holland', 'Portugal', 'd');
         this.questArr.push(q36);
 
         const q37 = new Question('Jamestown, the first permanent English Colony in North America, was founded in which future state?', 'Virginia', 'Delaware', 'Rhode Island', 'New Jersey', 'a');
         this.questArr.push(q37);
-        const q38 = new Question('What was the name of the pandemic which killed over 1% of the world\'s population in 1918? Spanish Flu', 'Small pox', 'Spanish flu', 'bubonic plague', 'Scarlet fever', 'b');
+        const q38 = new Question('What was the name of the pandemic which killed over 1% of the world\'s population in 1918? Spanish Flu', 'Small pox', 'Spanish flu', 'Bubonic plague', 'Scarlet fever', 'b');
         this.questArr.push(q38);
         const q39 = new Question('Which explorer was the first to cross the Pacific Ocean?', 'Francis Drake', 'Hernan Cortez', 'Ferdinand Magellan', 'Chirstopher Columbus', 'd');
         this.questArr.push(q39);
@@ -229,13 +228,34 @@ const game = {
     getScores() {
         this.playerPoints.push(this.activePlayer.points);
         this.status = 'end';
-        const highScore = Math.max.apply(Math, this.playerPoints); 
-        const scoreIndex = this.playerPoints.indexOf(highScore);
-        this.victor = this.playerArr[scoreIndex];
+        const indices = [];
+        const highScore = Math.max.apply(Math, this.playerPoints);
+        let scoreIndex = this.playerPoints.indexOf(highScore);
+        while (scoreIndex != -1) {
+            indices.push(scoreIndex);
+            scoreIndex = this.playerPoints.indexOf(highScore, scoreIndex + 1);
+        }
+        console.log(indices);
         if(this.playerArr.length == 1){
-            $('.feeder').text(`${this.victor.name}, your score is ${highScore}!`);
+            const victor = this.playerArr[indices[0]];
+            if(highScore < 2) {
+                $('.feeder').text(`${victor.name}, your score is ${highScore}... You should have spent less time talking in history class!`);
+            } else {          
+                $('.feeder').text(`${victor.name}, your score is ${highScore}!`);
+            };
+        } else if(indices.length == 1) {
+            const victor = this.playerArr[indices[0]];           
+            $('.feeder').text(`All players have completed their quizzes and ${victor.name} is the winner with a high score of ${highScore}!`);
         } else {
-            $('.feeder').text(`All players have completed their quizzes and ${this.victor.name} is the winner with a high score of ${highScore}!`);
+            const vicArr = [];
+            for(let i = 0; i < indices.length; i++) {
+                vicArr.push(this.playerArr[indices[i]]);
+            };
+            let string = "All players have completed their quizzes and it's a tie! With a high score of " + highScore + " it's a draw between these players: \n";
+            for(let i = 0; i < vicArr.length; i++) {
+                string = string + vicArr[i].name + " ";
+                $('.feeder').text(string);
+            };
         };
         $('.a').text('Play again');
         $('.b').hide();
