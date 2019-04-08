@@ -1,6 +1,6 @@
 h1, h3, h4	{
 	text-align: center;
-
+	font-family: sans-serif;
 }
 
 h1 {
@@ -8,8 +8,15 @@ h1 {
 	padding-bottom: 8px;
 	font-family: 'Niconne', cursive;
 	font-size: 50px;
-	text-shadow: 3px 3px 3px #000000;
+	text-shadow: 2px 2px 2px #525252;
+	transition: 1s ease;
+}
 
+h1:hover	{
+	-webkit-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	transform: scale(1.2);
+	transition: 1s ease;
 }
 
 #scroll-zone {
@@ -43,6 +50,7 @@ h1 {
 	height: 70px;
 	height: 70px;
 	margin: 0 auto;
+	font-family: sans-serif;
 }
 
 #container {

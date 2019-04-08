@@ -209,16 +209,16 @@ const game = {
         this.activePlayer = this.playerArr[nextPlayNum];
         this.status = 'pause';
         $('.feeder').text(`Question limit reached. ${this.activePlayer.name}, it is now your turn! Are you ready to continue?`);
-        $('.a').text('CONTINUE');
+        $('.a').text('Yes, continue');
         $('.b').hide();
         $('.c').hide();
         $('.d').hide();
     },
     cleanQuestArr() {
-        this.qToMove = this.questArr.splice(this.questArr[(this.qNum)], 1);
+        // 
+        this.qToMove = this.questArr.splice(this.qNum, 1);
         this.discardedQuestions.push(this.qToMove);
         this.qToMove = [];
-        console.log(this.questArr);
     },
     unhide() {
         $('.feeder').text(this.questArr[this.qNum].question);
