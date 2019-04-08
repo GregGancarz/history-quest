@@ -45,7 +45,7 @@ const game = {
     discardedQuestions: [],
     playerPoints: [],
     quizLength: '',
-    victor: '', // player with high points
+    victor: '',
     status: '',
     correctKey: '',
     clicked: '',
@@ -136,6 +136,16 @@ const game = {
         this.questArr.push(q23);
         const q24 = new Question('Thanks to series of partitions, this European nation ceased to exist from 1795, until 1918, when it regained its sovereignty:', 'Bulgaria', 'Switzerland', 'Denmark', 'Poland', 'd');
         this.questArr.push(q24);
+
+        const q25 = new Question('John Wilkes Booth shouted "Sic semper tyrannis" after shooting Lincoln. The phrase is Latin and means:', 'Thus always to tyrants', 'For the resumption of tyranny', 'the South will rise again', 'I came, I saw, I conquered', 'a');
+        this.questArr.push(q25);
+        const q26 = new Question('in 1830, Greece gained its independence after centuries of brutal subjugation under which nation?', 'Bulgaria', 'the Ottoman Caliphate', 'Hungary', 'Romania', 'b');
+        this.questArr.push(q26);
+        const q27 = new Question('Casimir Pulaski, one of only eight people to be awarded honorary United States citizenship, was a Polish national who gained fame as a general in the American Revolution. At one point, he saved the life of which founding father?', 'Alexander Hamilton', 'Samuel Adams', 'George Washington', 'Thomas Jefferson', 'c');
+        this.questArr.push(q27);
+        const q28 = new Question('Saint Ignatius of Loyola, who founded the Catholic Holy Order of the Jesuits in 16th century, was a native of which land?', 'Italy', 'England', 'Greece', 'Spain', 'd');
+        this.questArr.push(q28);
+
     },
     getQuestion() {
         game.status = 'game';
@@ -164,9 +174,10 @@ const game = {
         $('.d').show();
     },
     cleanQuestArr() {
-        qToMove = this.questArr.splice(this.questArr[(this.qNum)], 1);
+        this.qToMove = this.questArr.splice(this.questArr[(this.qNum)], 1);
         this.discardedQuestions.push(this.qToMove);
-        qToMove = [];
+        this.qToMove = [];
+        console.log(this.questArr);
     },
     clickAnswer() {
         this.correctKey = this.questArr[this.qNum].correct
@@ -186,9 +197,9 @@ const game = {
     getScores() {
         this.playerPoints.push(this.activePlayer.points);
         this.status = 'end';
-        const highScore = Math.max.apply(Math, this.playerPoints);     // gives the highest score
-        const scoreIndex = this.playerPoints.indexOf(highScore);       // gives the location of the highest score
-        this.victor = this.playerArr[scoreIndex];              // gets the name at the same location
+        const highScore = Math.max.apply(Math, this.playerPoints); 
+        const scoreIndex = this.playerPoints.indexOf(highScore);
+        this.victor = this.playerArr[scoreIndex];
         if(this.playerArr.length == 1){
             $('.feeder').text(`${this.victor.name}, your score is ${highScore}!`);
         } else {
@@ -204,9 +215,9 @@ const game = {
         this.status = 'setLimit';
         $('.feeder').text(`Select how many questions each player will have...`);
         $('.a').text(2);
-        $('.b').text(4);
-        $('.c').text(6);
-        $('.d').text(8);
+        $('.b').text(3);
+        $('.c').text(5);
+        $('.d').text(6);
     }
 }
 
