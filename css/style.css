@@ -89,10 +89,12 @@ button {
 	height: 70px;
 	width: 275px;
 	margin: 1px 4px;
-	font-size: 17px;
+	font-size: 19px;
 	text-shadow: .5px .5px 1px #525252;
-
-}
+	border-style: outset;
+	border-width: 3px;
+/*	background-color: #996633;
+*/}
 
 #container {
 	background-image: url("https://st2.depositphotos.com/1011833/9129/i/950/depositphotos_91293576-stock-photo-old-nautical-map-background.jpg");
