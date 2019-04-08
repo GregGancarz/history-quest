@@ -14,7 +14,7 @@
 // and a button that takes them back to the start menu screen.
 
 
-
+////// CLASS CONSTRUCTORS //////
 class Player {
 	constructor(selector, name) {
 		this.points = 0;
@@ -35,8 +35,7 @@ class Question {
     }
 }   
 
-
-
+////// GAME OBJECTS & ARRAYS //////
 const game = {
     activePlayer: '',
     playerArr: [],
@@ -50,6 +49,8 @@ const game = {
     correctKey: '',
     clicked: '',
     qNum: '',
+
+////// FUNCTIONS -- IN RELEVANT ORDER //////
     begin1P() {
         const player1 = new Player(0, 'Player 1');
         this.activePlayer = player1;
@@ -82,15 +83,21 @@ const game = {
         this.playerArr.push(player3)
         this.playerArr.push(player4)
     },
-    returnToMain() {
-        location.reload();
+    getQLimits() {
+        this.status = 'setLimit';
+        $('.feeder').text(`Select how many questions each player will have...`);
+        $('h4').hide();
+        $('.a').text(3);
+        $('.b').text(5);
+        $('.c').text(8);
+        $('.d').text(10);
     },
     genQuestions() {
         const q1 = new Question('Catherine the Great ruled what country?', 'Russia', 'France', 'Germany', 'England', 'a');
         this.questArr.push(q1);
         const q2 = new Question('During which year did Christopher Columbus first arrive in the Americas?', '1492', '1503', '1483', '1514', 'a');
         this.questArr.push(q2);
-        const q3 = new Question('The Islamic conquest of Spain was initiated by which caliphate?', 'Umayyad', 'Rashidun', 'Abbasid', 'Ottoman', 'a');
+        const q3 = new Question('The Islamic conquest of Spain was initiated by which Muslim caliphate?', 'Umayyad', 'Rashidun', 'Abbasid', 'Ottoman', 'a');
         this.questArr.push(q3);
         const q4 = new Question('Which of the following men is known as the "father of Texas"?', 'Stephen Austin', 'Sam Houston', 'Alexander Dalls', 'Davey Crockett', 'a');
         this.questArr.push(q4);
@@ -123,7 +130,7 @@ const game = {
         this.questArr.push(q17);
         const q18 = new Question('Which of the following men served as the 8th president of the United States?', 'Abraham Lincoln', 'Martin Van Buren', 'Benjamin Frankin', 'Jonathan Marston', 'b');
         this.questArr.push(q18);    
-        const q19 = new Question('Although Italian by birth, Colombus sailed under the colors of which European nation?', 'England', 'Portugal', 'Spain', 'Scotland', 'c');
+        const q19 = new Question('Although Italian by birth, Columbus sailed under the colors of which European nation?', 'England', 'Portugal', 'Spain', 'Scotland', 'c');
         this.questArr.push(q19);
         const q20 = new Question('Had he been born today, religious reformer Martin Luther would have lived in which European nation?', 'Poland', 'England', 'Italy', 'Germany', 'd');
         this.questArr.push(q20);
@@ -146,6 +153,32 @@ const game = {
         const q28 = new Question('Saint Ignatius of Loyola, who founded the Catholic Holy Order of the Jesuits in 16th century, was a native of which land?', 'Italy', 'England', 'Greece', 'Spain', 'd');
         this.questArr.push(q28);
 
+        const q29 = new Question('With the backing of the US, Panama gained independence from this nation in 1903:', 'Colombia', 'Spain', 'Costa Rica', 'Nicaraugua', 'a');
+        this.questArr.push(q29);
+        const q30 = new Question('World War II was triggered in 1939 after Germany\'s invasion of whch nation?', 'Holland', 'Poland', 'Austria', 'France', 'b');
+        this.questArr.push(q30);
+        const q31 = new Question('Vincent Van Gogh was an impressionist painter hailing from which country?', 'France', 'Ireland', 'The Netherlands', 'Austria', 'c');
+        this.questArr.push(q31);
+        const q32 = new Question('Which of the following nations remained neutral and uninvolved in World War II?', 'Great Britain', 'Italy', 'Greece', 'Switzerland', 'd');
+        this.questArr.push(q32);
+
+        const q33 = new Question('Alexander the Great hailed from which ancient region?', 'Greece', 'Italy', 'Dalmatia', 'Thrace', 'a');
+        this.questArr.push(q33);
+        const q34 = new Question('Southern Rhodesia became what country in 1980?', 'South Africa', 'Zimbabwe', 'Zambia', 'Botswana', 'b');
+        this.questArr.push(q34);
+        const q35 = new Question('Founded in 1636, which is the oldest University in the USA?', 'Cornell', 'Princeton', 'Harvard', 'Yale', 'c');
+        this.questArr.push(q35);
+        const q36 = new Question('Brazil was originally a colony of which nation?', 'England', 'Spain', 'Holland', 'Brazil', 'd');
+        this.questArr.push(q36);
+
+        const q37 = new Question('Jamestown, the first permanent English Colony in North America, was founded in which future state?', 'Virginia', 'Delaware', 'Rhode Island', 'New Jersey', 'a');
+        this.questArr.push(q37);
+        const q38 = new Question('What was the name of the pandemic which killed over 1% of the world\'s population in 1918? Spanish Flu', 'Small pox', 'Spanish flu', 'bubonic plague', 'Scarlet fever', 'b');
+        this.questArr.push(q38);
+        const q39 = new Question('Which explorer was the first to cross the Pacific Ocean?', 'Francis Drake', 'Hernan Cortez', 'Ferdinand Magellan', 'Chirstopher Columbus', 'd');
+        this.questArr.push(q39);
+        const q40 = new Question('What 19th-century president erroneously noted: "The ballot is stronger than the bullet"?', 'Andrew Jackson', 'William McKinley', 'Zachary Taylor', 'Abraham Lincoln', 'd');
+        this.questArr.push(q40);
     },
     getQuestion() {
         game.status = 'game';
@@ -155,29 +188,6 @@ const game = {
         $('.b').text(this.questArr[this.qNum].b);
         $('.c').text(this.questArr[this.qNum].c);
         $('.d').text(this.questArr[this.qNum].d);
-    },
-    switchPlayer() {
-        this.playerPoints.push(this.activePlayer.points);
-        nextPlayNum = (this.activePlayer.selector += 1);
-        this.activePlayer = this.playerArr[nextPlayNum];
-        this.status = 'pause';
-        $('.feeder').text(`Question limit reached. ${this.activePlayer.name}, it is now your turn! Are you ready to continue?`);
-        $('.a').text('CONTINUE');
-        $('.b').hide();
-        $('.c').hide();
-        $('.d').hide();
-    },
-    unhide() {
-        $('.feeder').text(this.questArr[this.qNum].question);
-        $('.b').show();
-        $('.c').show();
-        $('.d').show();
-    },
-    cleanQuestArr() {
-        this.qToMove = this.questArr.splice(this.questArr[(this.qNum)], 1);
-        this.discardedQuestions.push(this.qToMove);
-        this.qToMove = [];
-        console.log(this.questArr);
     },
     clickAnswer() {
         this.correctKey = this.questArr[this.qNum].correct
@@ -192,7 +202,29 @@ const game = {
         } else {
             this.getQuestion();
         };
-        
+    },
+    switchPlayer() {
+        this.playerPoints.push(this.activePlayer.points);
+        nextPlayNum = (this.activePlayer.selector += 1);
+        this.activePlayer = this.playerArr[nextPlayNum];
+        this.status = 'pause';
+        $('.feeder').text(`Question limit reached. ${this.activePlayer.name}, it is now your turn! Are you ready to continue?`);
+        $('.a').text('CONTINUE');
+        $('.b').hide();
+        $('.c').hide();
+        $('.d').hide();
+    },
+    cleanQuestArr() {
+        this.qToMove = this.questArr.splice(this.questArr[(this.qNum)], 1);
+        this.discardedQuestions.push(this.qToMove);
+        this.qToMove = [];
+        console.log(this.questArr);
+    },
+    unhide() {
+        $('.feeder').text(this.questArr[this.qNum].question);
+        $('.b').show();
+        $('.c').show();
+        $('.d').show();
     },
     getScores() {
         this.playerPoints.push(this.activePlayer.points);
@@ -209,20 +241,13 @@ const game = {
         $('.b').hide();
         $('.c').hide();
         $('.d').hide();
-
     },
-    getQLimits() {
-        this.status = 'setLimit';
-        $('.feeder').text(`Select how many questions each player will have...`);
-        $('.a').text(2);
-        $('.b').text(3);
-        $('.c').text(5);
-        $('.d').text(6);
+    returnToMain() {
+        location.reload();
     }
 }
 
-
-
+////// EVENT LISTENERS. //////
 $('.a').on('click', (e) => {
     $clicked = $(e.target);
     game.clicked = $clicked;
