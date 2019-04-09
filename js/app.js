@@ -256,12 +256,11 @@ const game = {
                 }            
             } else {
                 let listScores = '';
-                $('.feeder').text(`All players have completed their quizzes and ${victor.name} is the winner high score of ${highScore} out of ${this.quizLength}!`);
+                $('.feeder').text(`All players have completed their quizzes and ${victor.name} is the winner with a high score of ${highScore} out of ${this.quizLength}!`);
                 for(let i = 0; i < this.playerArr.length; i++) {
-                    listScores = listScores + `${this.playerArr[i].name}'s score: ${this.playerArr[i].points} \n`
+                    listScores = listScores + `${this.playerArr[i].name}'s score: ${this.playerArr[i].points}, `
                     $('h4').show();
                     $('h4').text(`${listScores}`)
-                    console.log(listScores);
                 }            
             }
         } else {
