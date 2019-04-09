@@ -236,27 +236,27 @@ const game = {
         if(this.playerArr.length == 1){
             const victor = this.playerArr[indices[0]];
             if(highScore < 2) {
-                $('.feeder').text(`${victor.name}, your score is ${highScore}... You should have spent less time talking in history class!`);
+                $('.feeder').text(`${victor.name}, you answered ${highScore} questions correctly out of ${this.quizLength}... You should have spent less time talking in history class!`);
             } else if(highScore == this.quizLength){          
-                $('.feeder').text(`${victor.name}, your score is ${highScore}! A flawless performance. You know your history!`);
+                $('.feeder').text(`${victor.name}, you answered all ${highScore} questions correctly! A flawless performance. You know your history!`);
             } else {
-                $('.feeder').text(`${victor.name}, your score is ${highScore}!`); 
+                $('.feeder').text(`${victor.name}, you answered ${highScore} questions correctly out of ${this.quizLength}!`); 
             };
         } else if(indices.length == 1) {
             const victor = this.playerArr[indices[0]];
             if(highScore == this.quizLength) {
-                $('.feeder').text(`All players have completed their quizzes and ${victor.name} is the winner with a flawless score of ${highScore}! Well done!`);
+                $('.feeder').text(`All players have completed their quizzes and ${victor.name} is the winner with a flawless score of ${highScore} correct answers! No mistakes!`);
             } else {
-                $('.feeder').text(`All players have completed their quizzes and ${victor.name} is the winner high score of ${highScore}!`);
+                $('.feeder').text(`All players have completed their quizzes and ${victor.name} is the winner high score of ${highScore} out of ${quizLength}!`);
             }
         } else {
             const vicArr = [];
             for(let i = 0; i < indices.length; i++) {
                 vicArr.push(this.playerArr[indices[i]]);
             };
-            let string = "All players have completed their quizzes and it's a tie! With a high score of " + highScore + ", it's a draw between these players: \n";
+            let string = "All players have completed their quizzes and it's a tie! With a high score of " + highScore + ", it's a draw between these players:";
             for(let i = 0; i < vicArr.length; i++) {
-                string = string + vicArr[i].name + "\n ";
+                string = string + vicArr[i].name + " ";
                 $('.feeder').text(string);
             };
         };

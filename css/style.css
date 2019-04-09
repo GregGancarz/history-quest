@@ -41,7 +41,7 @@ h4 {
 	text-align: center;
 }
 img {
-	max-height: 250px;
+	max-height: 255px;
 	border: 14px solid #321700;
 	transition: 1s ease;
 }
