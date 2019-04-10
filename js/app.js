@@ -105,7 +105,7 @@ const game = {
         this.questArr.push(q14);
         const q15 = new Question('Christopher Columbus first made landfall in what is now...?', 'Cuba', 'Haiti', 'Puerto Rico', 'The Bahamas', 'd', 'pics/q15.jpg');
         this.questArr.push(q15);
-        const q16 = new Question('The Russian Empire lost a major war against this Asian country at the beginning 20th century:', 'China', 'Mongolia', 'Vietnam', 'Japan', 'd', 'pics/q16.jpg');
+        const q16 = new Question('The Russian Empire lost a major war against this Asian country at the beginning of the 20th century:', 'China', 'Mongolia', 'Vietnam', 'Japan', 'd', 'pics/q16.jpg');
         this.questArr.push(q16);
 
         const q17 = new Question('The ancient region of Gaul comprised much of what modern nation?', 'France', 'Mongolia', 'Germany', 'Turkey', 'a', 'pics/q17.jpg');
