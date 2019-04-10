@@ -1,18 +1,3 @@
-/////// HISTORY QUESTIONS GAME  MVP ////////
-
-// user clicks start and the game starts
-
-// user is presented a question and multiple answers to choose from
-
-// user clicks an answer and is shown another question
-
-// this continues until the questions have all been answered
-
-// oppenent is asked if ready. They click ready and the process repeats
-
-// when all questions have been answered, users are presented their scores 
-// and a button that takes them back to the start menu screen.
-
 ////// CLASS CONSTRUCTORS //////
 class Player {
 	constructor(selector, name) {
@@ -258,7 +243,7 @@ const game = {
                 let listScores = '';
                 $('.feeder').text(`All players have completed their quizzes and ${victor.name} is the winner with a high score of ${highScore} out of ${this.quizLength}!`);
                 for(let i = 0; i < this.playerArr.length; i++) {
-                    listScores = listScores + `${this.playerArr[i].name}'s score: ${this.playerArr[i].points}, `
+                    listScores = listScores + `${this.playerArr[i].name}'s score: ${this.playerArr[i].points}; `
                     $('h4').show();
                     $('h4').text(`${listScores}`)
                 }            
@@ -270,7 +255,7 @@ const game = {
             };
             let string = "All players have completed their quizzes and it's a tie! With a high score of " + highScore + ", it's a draw between these players: ";
             for(let i = 0; i < vicArr.length; i++) {
-                string = string + vicArr[i].name + " ";
+                string = string + vicArr[i].name + "; ";
                 $('.feeder').text(string);
             };
         };
