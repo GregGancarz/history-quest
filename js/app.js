@@ -3,6 +3,7 @@ class Player {
 	constructor(selector, name) {
 		this.points = 0;
         this.selector = selector;
+        // Name used for display
         this.name = name;
 
 	}
@@ -30,9 +31,11 @@ const game = {
     quizLength: '',
     status: '',
     clicked: '',
+    // qNum is used to index the array
     qNum: '',
 
 ////// FUNCTIONS -- IN RELEVANT ORDER //////
+    ///////// Launches game depending on how many players selected /////////
     begin1P() {
         const player1 = new Player(0, 'Player 1');
         this.activePlayer = player1;
@@ -65,6 +68,8 @@ const game = {
         this.playerArr.push(player3)
         this.playerArr.push(player4)
     },
+
+    //// sets game length //////
     getQLimits() {
         this.status = 'setLimit';
         $('.feeder').text(`Select how many questions each player will have...`);
@@ -75,6 +80,11 @@ const game = {
         $('.d').text(10);
     },
     genQuestions() {
+        //// first 16 questions generated in following:
+        // A x 4
+        // B x 4
+        // C x 4
+        // D x 4
         const q1 = new Question('Catherine the Great ruled what country?', 'Russia', 'France', 'Germany', 'England', 'a', 'pics/q01.jpg');
         this.questArr.push(q1);
         const q2 = new Question('During which year did Christopher Columbus first arrive in the Americas?', '1492', '1503', '1483', '1514', 'a', 'pics/q02.jpg');
@@ -108,6 +118,7 @@ const game = {
         const q16 = new Question('The Russian Empire lost a major war against this Asian country at the beginning of the 20th century:', 'China', 'Mongolia', 'Vietnam', 'Japan', 'd', 'pics/q16.jpg');
         this.questArr.push(q16);
 
+        // remaining questions generated in A, B, C, D key format
         const q17 = new Question('The ancient region of Gaul comprised much of what modern nation?', 'France', 'Mongolia', 'Germany', 'Turkey', 'a', 'pics/q17.jpg');
         this.questArr.push(q17);
         const q18 = new Question('Which of the following men served as the 8th president of the United States?', 'Abraham Lincoln', 'Martin Van Buren', 'Benjamin Frankin', 'Jonathan Marston', 'b', 'pics/q18.jpg');
@@ -178,6 +189,7 @@ const game = {
             this.activePlayer.points += 1;
         };
         this.cleanQuestArr();
+        // Determine game progress and appropriate response
         if(this.discardedQuestions.length % (this.quizLength) === 0 && (this.activePlayer.selector + 1) < this.playerArr.length) {
             this.switchPlayer();
         } else if (this.discardedQuestions.length % (this.quizLength) === 0 && (this.activePlayer.selector + 1) == this.playerArr.length) {
@@ -219,6 +231,7 @@ const game = {
             indices.push(scoreIndex);
             scoreIndex = this.playerPoints.indexOf(highScore, scoreIndex + 1);
         }
+        // single player end game
         if(this.playerArr.length == 1){
             const victor = this.playerArr[indices[0]];
             if(highScore < 2) {
@@ -228,6 +241,7 @@ const game = {
             } else {
                 $('.feeder').text(`${victor.name}, you answered ${highScore} questions correctly out of ${this.quizLength}!`); 
             };
+        // multiplayer one winner
         } else if(indices.length == 1) {
             const victor = this.playerArr[indices[0]];
             if(highScore == this.quizLength) {
@@ -248,6 +262,7 @@ const game = {
                     $('h4').text(`${listScores}`)
                 }            
             }
+        // multiplayer tie
         } else {
             const vicArr = [];
             for(let i = 0; i < indices.length; i++) {
